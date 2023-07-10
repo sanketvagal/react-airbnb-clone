@@ -1,37 +1,28 @@
-import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Card from './components/Card'
-/*
-Challenge: Pass props to the Card component and display that data
+import data from './data'
 
-- img ("katie-zaferes.png")
-- rating ("5.0")
-- reviewCount (6)
-- country (Whatever you want)
-- title ("Life Lessons with Katie Zaferes")
-- price (136)
-
-*/
 
 function App() {
+  const cardElements = data.map(card => {
+    return <Card
+      img={card.coverImg}
+      rating={card.stats.rating}
+      reviewCount={card.stats.reviewCount}
+      country={card.location}
+      title={card.title}
+      price={card.price}
+    />
+  })
 
   return (
-    <>
-      <div className='container'>
-        <Navbar />
-        <Hero />
-        <Card
-          img="katie-zaferes.png"
-          rating="5.0"
-          reviewCount={6}
-          country="USA"
-          title="Life Lessons with Katie Zaferes"
-          price={136}
-        />
-      </div>
-    </>
+    <div className='container'>
+      <Navbar />
+      <Hero />
+      {cardElements}
+    </div>
   )
 }
 
