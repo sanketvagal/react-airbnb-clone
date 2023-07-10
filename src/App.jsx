@@ -8,6 +8,7 @@ import data from './data'
 function App() {
   const cardElements = data.map(card => {
     return <Card
+      key={card.id}
       img={card.coverImg}
       rating={card.stats.rating}
       reviewCount={card.stats.reviewCount}
@@ -21,7 +22,10 @@ function App() {
     <div className='container'>
       <Navbar />
       <Hero />
-      {cardElements}
+      <section className="cards-list">
+        {cardElements}
+      </section>
+
     </div>
   )
 }
